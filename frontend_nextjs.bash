@@ -13,4 +13,4 @@ tar -xvzf ltc-frontend-nextjs.tar.gz > /dev/null
 # build it
 cd ~/ltc-frontend-nextjs
 sudo docker build -t ltc-frontend-nextjs .
-sudo docker run -dp 3000:3000 ltc-frontend-nextjs > container
+sudo docker run -d -p localhost:3000:3000 ltc-frontend-nextjs > container
