@@ -13,7 +13,7 @@ sudp cp ./geo_cloudflare.conf /etc/nginx
 
 # add geo
 echo 'geo $cloudflare_ips {
-  default 0
+  default 1
   include /etc/nginx/geo_cloudflare.conf
 }' | sudo tee -a /etc/nginx/nginx.conf
 
