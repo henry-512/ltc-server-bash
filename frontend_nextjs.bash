@@ -8,6 +8,7 @@ sudo docker container prune
 # unbundle
 cd ~
 rm -r ~/ltc-frontend-nextjs
+echo "unzipping..."
 tar -xvzf ltc-frontend-nextjs.tar.gz > /dev/null
 # build it
 cd ~/ltc-frontend-nextjs
