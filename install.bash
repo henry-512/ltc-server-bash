@@ -21,9 +21,6 @@ sudo apt-get update
 sudo apt-get install iptables-persistent -y
 
 # block non-cloudflare ip addresses
-# block input
-sudo ip6tables -P INPUT DROP
-sudo iptables -P INPUT DROP
 sudo iptables -A INPUT -s 192.168.1.190 -p tcp --dport ssh -j ACCEPT
 # NOTE: THIS BLOCKS ALL OUTGOING FROM CONTAINERS TOO
 sudo iptables -I DOCKER-USER -j DROP
@@ -38,6 +35,8 @@ for i in `curl https://www.cloudflare.com/ips-v4`; do sudo iptables -I DOCKER-US
 for i in `curl https://www.cloudflare.com/ips-v4`; do sudo iptables -I DOCKER-USER -p tcp -m conntrack --ctorigdstport http --ctdir ORIGINAL -d $i -j ACCEPT;done
 for i in `curl https://www.cloudflare.com/ips-v6`; do sudo ip6tables -I DOCKER-USER -p tcp -m conntrack --ctorigdstport http --ctdir ORIGINAL -s $i -j ACCEPT;done
 for i in `curl https://www.cloudflare.com/ips-v6`; do sudo ip6tables -I DOCKER-USER -p tcp -m conntrack --ctorigdstport http --ctdir ORIGINAL -d $i -j ACCEPT;done
+# save with iptables-persistent
+sudo dpkg-reconfigure iptables-persistent
 
 # python
 sudo apt-get install python3-pip -y
@@ -53,3 +52,19 @@ sudo apt install python3-gpiozero
 sudo mkdir /ssd
 sudo mount /dev/sda /ssd
 sudo sh -c 'echo "/dev/sda   /ssd  ext4  defaults  0  1" >> /etc/fstab'
+
+echo '# turn off led
+# Turn off PWR LED
+dtparam=pwr_led_trigger=none
+dtparam=pwr_led_activelow=off
+ 
+# Turn off ACT LED
+dtparam=act_led_trigger=none
+dtparam=act_led_activelow=off
+ 
+# Turn off Ethernet ACT LED
+dtparam=eth_led0=4
+ 
+# Turn off Ethernet LNK LED
+dtparam=eth_led1=4' | sudo tee -a /boot/firmware/config.txt
+
