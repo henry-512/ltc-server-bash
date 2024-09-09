@@ -19,5 +19,6 @@ read -p "Put SSL key in /etc/nginx/ssl"
 
 # copy configuration
 sudo cp ./ltc-frontend-nextjs.conf /etc/nginx/conf.d
+sudo cp ./_catchall.conf /etc/nginx/conf.d
 
 sudo nginx -s reload
