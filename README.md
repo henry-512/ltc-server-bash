@@ -13,3 +13,5 @@ This is the repo for the management scripts for my server.
 ## command reference
 
 `cat /etc/os-release`
+
+--internal for docker networks prevents -p from working
