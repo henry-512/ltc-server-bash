@@ -3,7 +3,7 @@
 # repo
 if [[ -d ~/ltc-peostri-lms ]]; then
   cd ~/ltc-peostri-lms
-  git fetch
+  git pull
 else
   cd ~
   gh repo clone henry-512/ltc-peostri-lms
