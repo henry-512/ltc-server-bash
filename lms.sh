@@ -6,7 +6,7 @@ if [[ -d ~/ltc-peostri-lms ]]; then
   git pull
 else
   cd ~
-  gh repo clone henry-512/ltc-peostri-lms
+  gh repo clone henry-512/ltc-peostri-lms -- --depth 1
 fi
 
 # bridge
