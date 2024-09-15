@@ -18,6 +18,6 @@ read -p "Put SSL key in /etc/nginx/ssl"
 # }' | sudo tee -a /etc/nginx/nginx.conf
 
 # copy configuration
-sudo cp ./nginx/. /etc/nginx/conf.d/
+sudo cp -r ./nginx/. /etc/nginx/conf.d/
 
 sudo nginx -s reload
