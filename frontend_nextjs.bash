@@ -10,7 +10,7 @@ sudo docker container stop ltc-frontend-nextjs-inst
 sudo docker container remove ltc-frontend-nextjs-inst
 sudo docker image remove ltc-frontend-nextjs
 sudo docker build -t ltc-frontend-nextjs .
-sudo docker run -d -p 127.0.0.1:3000:3000 ltc-frontend-nextjs --name ltc-frontend-nextjs-inst
+sudo docker run -d -p 127.0.0.1:3000:3000 --name ltc-frontend-nextjs-inst ltc-frontend-nextjs
 
 # clean install
 rm -r ~/ltc-frontend-nextjs
